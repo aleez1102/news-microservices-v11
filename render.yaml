@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: rewrite-preprocessor-ms
+    env: docker
+    plan: free
+    rootDir: rewrite-ms
+    dockerfilePath: Dockerfile
+
+  - type: web
+    name: internal-link-engine-ms
+    env: docker
+    plan: free
+    rootDir: internal-link-ms
+    dockerfilePath: Dockerfile
+
+  - type: web
+    name: prediction-engine-ms
+    env: docker
+    plan: free
+    rootDir: prediction-ms
+    dockerfilePath: Dockerfile
+
+  - type: web
+    name: db-rotation-worker-ms
+    env: docker
+    plan: free
+    rootDir: db-rotation-ms
+    dockerfilePath: Dockerfile
+    cron:
+      - command: "node rotate.js"
+        schedule: "0 */6 * * *"
+
+  - type: web
+    name: tts-proxy-ms
+    env: docker
+    plan: free
+    rootDir: tts-proxy-ms
+    dockerfilePath: Dockerfile
