@@ -20,15 +20,15 @@ services:
     rootDir: prediction-ms
     dockerfilePath: Dockerfile
 
-  - type: web
+ - type: cron
     name: db-rotation-worker-ms
     env: docker
+    region: oregon
     plan: free
     rootDir: db-rotation-ms
     dockerfilePath: Dockerfile
-    cron:
-      - command: "node rotate.js"
-        schedule: "0 */6 * * *"
+    schedule: "0 */6 * * *"
+    command: "node rotate.js"
 
   - type: web
     name: tts-proxy-ms
