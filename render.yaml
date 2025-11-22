@@ -13,14 +13,14 @@ services:
     rootDir: internal-link-ms
     dockerfilePath: Dockerfile
 
-  - type: web
+    - type: web
     name: prediction-engine-ms
     env: docker
     plan: free
     rootDir: prediction-ms
     dockerfilePath: Dockerfile
 
- - type: cron
+  - type: cron
     name: db-rotation-worker-ms
     env: docker
     region: oregon
