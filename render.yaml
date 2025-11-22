@@ -1,12 +1,15 @@
 services:
+
   - type: web
+  
     name: rewrite-preprocessor-ms
     env: docker
     plan: free
     rootDir: rewrite-ms
     dockerfilePath: Dockerfile
-
+    
   - type: web
+  
     name: internal-link-engine-ms
     env: docker
     plan: free
@@ -14,6 +17,7 @@ services:
     dockerfilePath: Dockerfile
 
     - type: web
+    
     name: prediction-engine-ms
     env: docker
     plan: free
@@ -21,6 +25,7 @@ services:
     dockerfilePath: Dockerfile
 
   - type: cron
+  
     name: db-rotation-worker-ms
     env: docker
     region: oregon
@@ -31,6 +36,7 @@ services:
     command: "node rotate.js"
 
   - type: web
+  
     name: tts-proxy-ms
     env: docker
     plan: free
